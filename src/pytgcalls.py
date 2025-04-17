@@ -368,16 +368,12 @@ class MusicBot:
                 f"‣ <b>Requested by:</b> {song.user}"
             )
 
-            thumbnail = (
-                await gen_thumb(song) if await db.get_thumb_status(chat_id) else ""
-            )
             parse = await self.bot.parseTextEntities(text, types.TextParseModeHTML())
             if isinstance(parse, types.Error):
                 LOGGER.error("Parse error: %s", parse)
                 parse = parse.message
-            if thumbnail:
-                input_content = types.InputMessagePhoto(
-                    photo=types.InputFileLocal(thumbnail), caption=parse
+                input_content = types.InputMessageText(
+                    text=parse
                 )
                 reply = await self.bot.editMessageMedia(
                     chat_id=chat_id,
