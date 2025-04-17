@@ -467,7 +467,7 @@ async def handle_play_command(c: Client, msg: types.Message, is_video: bool = Fa
         return await _handle_text_search(c, reply_message, chat_id, wrapper, user_by)
 
 
-@Client.on_message(filters=Filter.command("play"))
+@Client.on_message(filters=Filter.command("oynat"))
 async def play_audio(c: Client, msg: types.Message) -> None:
     """Handle the /play command to play audio.
 
@@ -481,7 +481,7 @@ async def play_audio(c: Client, msg: types.Message) -> None:
     await handle_play_command(c, msg, is_video=False)
 
 
-@Client.on_message(filters=Filter.command("vplay"))
+@Client.on_message(filters=Filter.command("voynat"))
 async def play_video(c: Client, msg: types.Message) -> None:
     """
     Handle the /vplay command to play videos.
